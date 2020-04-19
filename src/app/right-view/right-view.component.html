@@ -1,0 +1,47 @@
+
+<table class="main-view">
+  <tr>
+    <td style="width: 30%; border: 1px solid black;"> 
+      <div class="selected-year d-flex justify-content-center align-items-center">
+        <span class="px-4 pointer" (click)="changeYear(-1)"><b><</b></span>
+        {{selectedYear}}
+        <span class="px-4 pointer" (click)="changeYear(+1)"><b>></b></span>
+      </div>
+    </td>
+    <td style="width: 70%;" class="d-flex">
+      <table class="table mb-0" *ngFor="let item of [1,2,3,4,5,6,0]; let i = index">
+        <tr *ngFor="let day of [1,2,3]; let j = index;">
+          <td class="px-5" style="border: 1px solid black;" 
+          (click) ="changeMonth(rightViewValues[item].months[j])"
+          [ngClass]="{ empty: !rightViewValues[item].months[j],
+                       highlight: rightViewValues[item].months[j] === selectedMonth,
+                       feb: getMonthCss(rightViewValues[item].months[j]) === 'feb',
+                       month30: getMonthCss(rightViewValues[item].months[j]) === '30',
+                       month31: getMonthCss(rightViewValues[item].months[j]) === '31' }"> {{ rightViewValues[item].months[j] | uppercase}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 30%;">
+      <div class="p-day">
+        <div class="each-day" [ngClass]="{month31: date=== 31,
+           highlight: highligheCurrentDate(date),
+           month30: date=== 30, feb: date=== 29 ||date===  28}" *ngFor="let date of monthDays"
+           (click)="AddEvent(date)"
+           >
+          {{date=== 0 ? '' : date}}  <span class="task-preset" *ngIf="isTaskAvaliable(date)"> 
+            <div class="task-popup"><app-show-task [tasks]="getTask(date)"></app-show-task></div>
+          </span>
+        </div>
+      </div>
+    </td>
+    <td style="width: 70%;">
+      <table class="table" >
+        <tr *ngFor="let dayArr of allDays;">
+          <td class="px-4 text-center" style="border: 1px solid black;" [ngClass]="{'text-danger': day=='Sun'}" *ngFor="let day of dayArr;"> {{day| uppercase}}</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>

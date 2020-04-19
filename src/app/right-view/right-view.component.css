@@ -1,0 +1,71 @@
+.empty {
+    padding-top: 36px;
+}
+
+.selected-year {
+    font-size: 25px;
+}
+
+.month30 {
+    color: #007bff;
+}
+
+.feb {
+    color: #6610f2;
+}
+
+.month31 {
+    color:green;
+}
+
+.main-view {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.p-day {
+    display: grid;
+    margin-top: -23px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-auto-columns: 1fr;
+    grid-auto-flow: column;
+}
+
+.each-day {
+    padding: 11px 7px;
+    border: 1px solid black;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.highlight {
+    background-color: green;
+    color: #fff !important;
+}
+
+.task-preset {
+    background-color: red;
+    font-weight: 500;
+    border-radius: 50%;
+    padding: 0px 5px;
+    position: relative;
+}
+
+.task-popup {
+    position: absolute;
+    bottom: 17px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    width: 200px;
+    overflow: hidden;
+    display: none;
+    padding: 15px;
+    text-align: left;
+}
+
+.task-preset:hover .task-popup {
+    display: block;
+}

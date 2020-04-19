@@ -1,0 +1,13 @@
+<div class="px-3 py-3">
+  <h4>Add Task</h4>
+  <hr>
+  <form  [formGroup]="addTaskForm" (ngSubmit)="onaddClick()">
+    <textarea class="form-control" formControlName="task"></textarea>
+    <div class="text-danger" *ngIf="addTaskForm.get('task').touched &&  addTaskForm.get('task').invalid">
+      <div>Please add task.</div>
+    </div>
+    <div class="text-right">
+      <button type="submit" class="btn btn-success mt-2">Add</button>
+    </div>
+  </form>
+</div>
