@@ -97,8 +97,10 @@ export class RightViewComponent implements OnInit {
   }
 
   changeMonth(month: string) {
+    if (month) {
     this.selectedMonth = month;
     this.setDays();
+  }
     // console.log(this.ToDoList);
   }
 
